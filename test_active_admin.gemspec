@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "activesupport"
   gem.add_dependency "factory_girl"
+  gem.add_dependency "capybara"
 end

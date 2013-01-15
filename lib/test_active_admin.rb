@@ -19,7 +19,7 @@ module TestActiveAdmin
   def create_resource(resource)
     return if resource.resource_class.first.present?
 
-    factory_name = resource.resource_name.underscore
+    factory_name = resource.resource_name.underscore.gsub(?/, ?_)
     if FactoryGirl.factories.registered? factory_name
       FactoryGirl.create factory_name
     else
