@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["slike982@gmail.com"]
   gem.description   = %q{Test Active Admin in your application}
   gem.summary       = gem.description
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/BrandyMint"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
