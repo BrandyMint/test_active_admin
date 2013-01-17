@@ -10,15 +10,11 @@ and executes :index, :show, :edit actions for each resource.
 
 Add this line to your application's Gemfile:
 
-    gem 'test_active_admin'
+    gem "test_active_admin", :git => "git://github.com/BrandyMint/test_active_admin.git"
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install test_active_admin
 
 ## Usage
 
