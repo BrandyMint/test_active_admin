@@ -1,41 +1,11 @@
 # encoding: utf-8
 
 require "test_active_admin/version"
+require "test_active_admin/config"
+require "test_active_admin/helpers"
 
-module TestActiveAdmin
-
-  class Config
-    attr_reader :before_block, :login_block
-
-    def before(&block)
-      @before_block = block if block_given?
-    end
-
-    def login(&block)
-      @login_block = block if block_given?
-    end
-  end
-
-  def create_resource(resource)
-    return if resource.resource_class.first.present?
-
-    factory_name = resource.resource_name.underscore.gsub(?/, ?_)
-    if FactoryGirl.factories.registered? factory_name
-      FactoryGirl.create factory_name
-    else
-      warn("WARNING! Active Admin test: #{resource.resource_name} has not created, so :edit and :show actions will not test. " +
-               " Define factory '#{factory_name}' or create the resource manually.")
-    end
-  end
-  module_function :create_resource
-
-  def active_admin_resources
-    ActiveAdmin.application.namespaces.values.collect{|n| n.resources.resources }.flatten.select { |r| r.kind_of? ActiveAdmin::Resource }
-  end
-  module_function :active_admin_resources
-
-end
-
+# Creates Active Admin tests in a application.
+#
 def self.test_active_admin(&config_block)
 
   def test_active_admin_resource(resource)
