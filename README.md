@@ -9,12 +9,13 @@ and executes :index, :show, :edit actions for each resource.
 ## Installation
 
 Add this line to your application's Gemfile:
-
-    gem "test_active_admin", :git => "git://github.com/BrandyMint/test_active_admin.git"
-
+```Ruby
+gem "test_active_admin", :git => "git://github.com/BrandyMint/test_active_admin.git"
+```
 And then execute:
-
-    $ bundle
+```bash
+$ bundle
+```
 
 ## Usage
 
@@ -23,27 +24,29 @@ Create `*_spec.rb` file (ex. `active_admin_spec.rb`) in `requests` group of spec
 
 Define Active Admin tests in `active_admin_spec.rb`
 
-    require 'spec_helper'
-    require 'test_active_admin'
-    
-    # define active admin tests
-    test_active_admin do |config|
-      
-      config.before do
-        # code to be executed before each resource test
-        stub_some_things
-      end
-      
-      config.login do
-        # code to login to active admin
-        @admin_user = FactoryGirl.create(:admin_user)
-        visit '/admin'
-        fill_in 'admin_user_email', :with => @admin_user.email
-        fill_in 'admin_user_password', :with => @admin_user.password
-        click_button 'Login'
-      end
-      
-    end
+```Ruby
+require 'spec_helper'
+require 'test_active_admin'
+
+# define active admin tests
+test_active_admin do |config|
+  
+  config.before do
+    # code to be executed before each resource test
+    stub_some_things
+  end
+  
+  config.login do
+    # code to login to active admin
+    @admin_user = FactoryGirl.create(:admin_user)
+    visit '/admin'
+    fill_in 'admin_user_email', :with => @admin_user.email
+    fill_in 'admin_user_password', :with => @admin_user.password
+    click_button 'Login'
+  end
+  
+end
+```
 
 And now `active_admin_spec.rb` contains Capybara tests that can be runned.
 
